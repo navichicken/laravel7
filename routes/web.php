@@ -20,3 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/about', 'HomeController@acercade')->name('about');
+
+Route::get('/planes', 'HomeController@planes')->name('planes');
+
+Route::get('/biblioteca', 'HomeController@biblioteca')->name('biblioteca');
+
+Route::get('/perfil', 'HomeController@perfil')->name('perfil');

@@ -25,4 +25,45 @@ class HomeController extends Controller
     {
         return view('inicio');
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function acercade()
+    {
+        return view('acercade');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function planes()
+    {
+        return view('planes');
+    }
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function biblioteca()
+    {
+        return view('biblioteca');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function perfil()
+    {
+        return view('perfil');
+    }
+
+
 }

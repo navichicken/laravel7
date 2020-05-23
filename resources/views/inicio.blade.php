@@ -13,33 +13,34 @@
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/css/app.css">
+    <link href="{{ asset('css/app2.css') }}" rel="stylesheet">
 
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-sm navbar-light bg-light">
-        <a class="navbar-brand" href="#" title="Logo de la Pagina"><img src="images/logo_un.png" height="30" alt=""></a>
+        <a class="navbar-brand" onclick="location.reload()" style="cursor:pointer;" title="Logo de la Pagina"><img src="images/logo_un.png" height="30" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse d-sm-flex justify-content-between" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="inicio.php" title="Boton Inicio">Inicio</a>
-                <a class="nav-item nav-link" href="biblioteca.php" title="Boton Mi Biblioteca">Mi Biblioteca</a>
+                <a class="nav-item nav-link" onclick="location.reload()" style="cursor:pointer;"
+                 title="Boton Inicio">Inicio</a>
+                <a class="nav-item nav-link" href="{{route('biblioteca')}}" title="Boton Mi Biblioteca">Mi Biblioteca</a>
                 <div class="nav-item dropdown">
-                    <a class="nav-item dropdown nav-link dropdown-toggle" href="#" title="Boton Planes" id="navbarDropdownMenuCategories"
+                    <a class="nav-item dropdown nav-link dropdown-toggle"  title="Boton Planes" id="navbarDropdownMenuCategories"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Planes
                     </a>
                     <div class="dropdown-menu shadow border-0" aria-labelledby="navbarDropdownMenuCategories">
-                        <a class="dropdown-item" href="planes.php">Basico</a>
-                        <a class="dropdown-item" href="planes.php">Premium</a>
+                        <a class="dropdown-item" href="{{route('planes')}}">Basico</a>
+                        <a class="dropdown-item" href="{{route('planes')}}">Premium</a>
                     </div>
                 </div>
-                <a class="nav-item nav-link" href="acercade.php" title="Boton Acerca de">Acerca de</a>
+                <a class="nav-item nav-link" href="{{route('about')}}" title="Boton Acerca de">Acerca de</a>
 
             </div>
             <div class="navbar-nav">
@@ -47,16 +48,27 @@
                     <a class="nav-item dropdown nav-link dropdown-toggle" href="#" id="navbarDropdownMenuUser"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="images/logo_seguidor.png" height="30" class="logo-user d-inline-block mr-1">
-                        <span>Diefer715</span>
+                        <span>{{ Auth::user()->name }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right shadow border-0"
                         aria-labelledby="navbarDropdownMenuUser">
-                        <a class="dropdown-item" href="perfil.php">Mi perfil</a>
+                        <a class="dropdown-item" href="{{route('perfil')}}">Mi perfil</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item button" data-toggle="modal" data-target=".bd-example-modal-lg"
                             href="#">Nueva Nota</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="index.php">Cerrar sesión</a>
+
+                        <a class="dropdown-item" >
+
+                       <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Cerrar sesión') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </div>
                 </div>
             </div>

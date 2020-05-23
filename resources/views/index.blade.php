@@ -26,39 +26,86 @@
 
                 <div class="modal fade" id="modal-register" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content border-0">
-                                <div class="modal-header text-white" style="background-color: #43B1B4;">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Registrate en Un dia sin problemas</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmailRegister">Correo electrónico</label>
-                                        <input type="email" class="form-control" id="exampleInputEmailRegister"
-                                            aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputUserRegister">Nombre de usuario</label>
-                                        <input type="text" class="form-control" id="exampleInputUserRegister"
-                                            placeholder="Ingrese un nombre de usuario">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPasswordRegister">Contraseña</label>
-                                        <input type="password" class="form-control" id="exampleInputPasswordRegister"
-                                            placeholder="Ingrese una contraseña">
-                                    </div>
-                                </form>
-                                <small class="form-text text-muted">Estoy de acuerdo con los <a href="#">Terminos de
-                                        uso</a> y la <a href="#">Politica de Privacidad</a> de Un dia sin problemas</small>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="perfil.php" type="button" class="btn btn-primary">Registrarse</a>
-                            </div>
-                        </div>
+                    	<div class="modal-dialog modal-dialog-centered" role="document">
+												<!-- <form method="POST" action="{{ route('register') }}">
+		                       @csrf -->
+													<div class="modal-content border-0">
+															<div class="modal-header text-white" style="background-color: #43B1B4;">
+																	<h5 class="modal-title" id="exampleModalLongTitle">Registrate en Un dia sin problemas</h5>
+																	<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+																			<span aria-hidden="true">&times;</span>
+																	</button>
+															</div>
+															<div class="modal-body">
+																<form method="POST" action="{{ route('register') }}">
+						                        @csrf
+
+						                        <div class="form-group row">
+						                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
+
+						                            <div class="col-md-6">
+						                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Nombre"
+																						name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+
+						                                @error('name')
+						                                    <span class="invalid-feedback" role="alert">
+						                                        <strong>{{ $message }}</strong>
+						                                    </span>
+						                                @enderror
+						                            </div>
+						                        </div>
+
+						                        <div class="form-group row">
+						                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo') }}</label>
+
+						                            <div class="col-md-6">
+						                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"  placeholder="Correo"name="email" value="{{ old('email') }}" required autocomplete="email">
+
+						                                @error('email')
+						                                    <span class="invalid-feedback" role="alert">
+						                                        <strong>{{ $message }}</strong>
+						                                    </span>
+						                                @enderror
+						                            </div>
+						                        </div>
+
+						                        <div class="form-group row">
+						                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
+
+						                            <div class="col-md-6">
+						                                <input id="password" type="password" placeholder="Contraseña"
+																						 class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+
+						                                @error('password')
+						                                    <span class="invalid-feedback" role="alert">
+						                                        <strong>{{ $message }}</strong>
+						                                    </span>
+						                                @enderror
+						                            </div>
+						                        </div>
+
+						                        <div class="form-group row">
+						                            <label for="password-confirm" class="col-md-4 col-form-label
+																				text-md-right">{{ __('Confirmar Contraseña') }}</label>
+
+						                            <div class="col-md-6">
+						                                <input id="password-confirm" type="password" placeholder="Contraseña"
+																						class="form-control" name="password_confirmation" required autocomplete="new-password">
+						                            </div>
+						                        </div>
+
+						                        <div class="form-group row mb-0">
+						                            <div class="col-md-6 offset-md-4">
+						                                <button type="submit" class="btn btn-primary">
+						                                    {{ __('Registrar') }}
+						                                </button>
+						                            </div>
+						                        </div>
+						                    </form>
+															</div>
+
+													</div>
+												<!-- </form> -->
                     </div>
                 </div>
 
