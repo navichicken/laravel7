@@ -20,14 +20,14 @@
 <body>
 
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <a class="navbar-brand" onclick="location.reload()" style="cursor:pointer;" title="Logo de la Pagina"><img src="images/logo_un.png" height="30" alt=""></a>
+      <a class="navbar-brand" href="{{route('home')}}" title="Logo de la Pagina"><img src="images/logo_un.png" height="30" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse d-sm-flex justify-content-between" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-              <a class="nav-item nav-link" onclick="location.reload()" style="cursor:pointer;"
+              <a class="nav-item nav-link" href="{{route('home')}}"
                title="Boton Inicio">Inicio</a>
               <a class="nav-item nav-link" href="{{route('biblioteca')}}" title="Boton Mi Biblioteca">Mi Biblioteca</a>
               <div class="nav-item dropdown">
@@ -132,7 +132,7 @@
         <div>
             <img src="images/logo_seguidor.png" height="150" alt="image" class="rounded-circle">
         </div>
-        <p class="font-profile">Diego</p>
+        <p class="font-profile">{{ Auth::user()->name }}</p>
         <div class="row">
             <div class="col-sm color-white">
                 <p class="text-center mb-0">2</p>
@@ -171,7 +171,10 @@
                                 quasi?
                             </p>
                             <button type="button" class="btn btn-primary mb-4">Editar descripción</button>
-                            <p class="mb-0">Se unió el <span class="font-weight-bold">15 de Enero del 2020</span>
+                            <p class="mb-0">Se unió el
+                              <span class="font-weight-bold">
+                              {{Auth::user()->created_at}}
+                            </span>
                             </p>
                         </li>
                         <li class="list-group-item border-0">
