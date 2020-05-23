@@ -27,7 +27,7 @@
         </button>
         <div class="collapse navbar-collapse d-sm-flex justify-content-between" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" onclick="location.reload()" style="cursor:pointer;"
+                <a class="nav-item nav-link" href="{{route('home')}}"
                  title="Boton Inicio">Inicio</a>
                 <a class="nav-item nav-link" href="{{route('biblioteca')}}" title="Boton Mi Biblioteca">Mi Biblioteca</a>
                 <div class="nav-item dropdown">
